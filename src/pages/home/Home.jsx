@@ -6,7 +6,7 @@ import EventCard from "../../components/EventCard";
 import GeneralCard from "../../components/GeneralCard";
 import SectionHeader from "../../components/SectionHeader";
 
-export default function Home() {
+const Home = () => {
 	const [events, setEvents] = useState([]);
 
 	const getEvents = async () => {
@@ -54,7 +54,7 @@ export default function Home() {
 								id={event.id}
 								category={event.category}
 								image={`${axios.defaults.baseURL}/uploads/event/stratford-festival.png`}
-								name={event.event_name}
+								name={event.eventName}
 								eventDate={eventDate}
 							/>
 						);
@@ -158,4 +158,6 @@ export default function Home() {
 			{/* End Pros Artick */}
 		</div>
 	);
-}
+};
+
+export default Home;
