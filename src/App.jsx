@@ -7,7 +7,9 @@ function App() {
 	const MODE = import.meta.env.MODE;
 
 	axios.defaults.baseURL =
-		MODE === "development" ? "http://localhost:5000" : "https://api.artick.pro";
+		MODE === "development"
+			? "http://localhost:5000"
+			: "https://artick-app-api-production.up.railway.app/";
 	axios.defaults.withCredentials = true;
 	return <RouterProvider router={router} />;
 }
