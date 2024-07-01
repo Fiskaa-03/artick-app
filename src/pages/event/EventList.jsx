@@ -15,18 +15,20 @@ const EventList = () => {
 	}, []);
 
 	return (
-		<div className="flex items-center justify-around my-20 w-500 mx-auto">
+		<div className="flex items-center justify-around my-20 mx-auto">
 			{events.map((event) => {
 				const eventDate = new Date(event.schedule);
 				return (
-					<EventCard
-						key={event.id}
-						id={event.id}
-						category={event.category}
-						image={`${axios.defaults.baseURL}/uploads/event/stratford-festival.png`}
-						name={event.eventName}
-						eventDate={eventDate}
-					/>
+					<div className="mx-4" key={event.id}>
+						<EventCard
+							key={event.id}
+							id={event.id}
+							category={event.category}
+							image={`${axios.defaults.baseURL}/uploads/poster/${event.poster}`}
+							name={event.eventName}
+							eventDate={eventDate}
+						/>
+					</div>
 				);
 			})}
 		</div>

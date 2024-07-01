@@ -15,6 +15,8 @@ const EventDetail = () => {
 	const [eventDate, SetEventDate] = useState(new Date());
 	const [price, SetPrice] = useState();
 	const [place, SetPlace] = useState();
+	const [poster, SetPoster] = useState();
+	const [link, SetLink] = useState();
 	const month = eventDate.toLocaleString("default", {
 		month: "short",
 	});
@@ -34,6 +36,8 @@ const EventDetail = () => {
 		SetEventDate(new Date(response.data.schedule));
 		SetPrice(response.data.price);
 		SetPlace(response.data.place);
+		SetPoster(response.data.poster);
+		SetLink(response.data.link);
 	};
 
 	useEffect(() => {
@@ -51,7 +55,7 @@ const EventDetail = () => {
 				<div className="inline-flex w-full mt-20 h-96">
 					<div className="w-1/2 flex w-full justify-center items-center">
 						<Image
-							src={`${axios.defaults.baseURL}/uploads/event/stratford-festival.png`}></Image>
+							src={`${axios.defaults.baseURL}/uploads/poster/${poster}`}></Image>
 					</div>
 
 					<div className="w-5/6 text-black flex flex-col justify-between text-left">
@@ -94,10 +98,7 @@ const EventDetail = () => {
 								<Input type="number" color="primary" value={Total} />
 							</div> */}
 							<Button className="bg-primary">
-								<Link
-									href="https://lynk.id/fiska/JEP5wdY"
-									target="_blank"
-									className="text-white">
+								<Link href={`${link}`} target="_blank" className="text-white">
 									Book Now
 								</Link>
 							</Button>

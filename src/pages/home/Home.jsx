@@ -53,7 +53,7 @@ const Home = () => {
 								key={event.id}
 								id={event.id}
 								category={event.category}
-								image={`${axios.defaults.baseURL}/uploads/event/stratford-festival.png`}
+								image={`${axios.defaults.baseURL}/uploads/poster/${event.poster}`}
 								name={event.eventName}
 								eventDate={eventDate}
 							/>
