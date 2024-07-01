@@ -83,19 +83,20 @@ const NavigationBar = () => {
 					</Button>
 				</NavbarItem>
 			</NavbarContent>
-			<NavbarMenu>
+			<NavbarMenu className="p-10">
 				{menuItems.map((item, index) => (
 					<NavbarMenuItem key={`${item}-${index}`}>
 						<Link
 							color={
-								index === 2
+								item === "Beranda" && Location.pathname == "/"
 									? "primary"
-									: index === menuItems.length - 1
-									? "danger"
+									: item === "Cari Event" &&
+									  Location.pathname.startsWith("/event")
+									? "primary"
 									: "foreground"
 							}
-							className="w-full"
-							href="#"
+							className="w-full my-4"
+							href={index === 0 ? "/" : index === 2 ? "event" : "/"}
 							size="lg">
 							{item}
 						</Link>
