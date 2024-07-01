@@ -3,7 +3,11 @@ import axios from "axios";
 
 import { Image, Input, Button, Link } from "@nextui-org/react";
 import { IoLocationOutline } from "react-icons/io5";
-import { MdOutlineDateRange, MdAccessTime } from "react-icons/md";
+import {
+	MdOutlineDateRange,
+	MdAccessTime,
+	MdOutlineSell,
+} from "react-icons/md";
 import EventCard from "../../components/EventCard";
 import { useParams } from "react-router-dom";
 
@@ -17,6 +21,7 @@ const EventDetail = () => {
 	const [place, SetPlace] = useState();
 	const [poster, SetPoster] = useState();
 	const [link, SetLink] = useState();
+	const [sold, SetSold] = useState();
 	const month = eventDate.toLocaleString("default", {
 		month: "short",
 	});
@@ -38,6 +43,7 @@ const EventDetail = () => {
 		SetPlace(response.data.place);
 		SetPoster(response.data.poster);
 		SetLink(response.data.link);
+		SetSold(response.data.sold);
 	};
 
 	useEffect(() => {
@@ -53,7 +59,7 @@ const EventDetail = () => {
 		<div className="bg-white ">
 			<div className="container mx-auto">
 				<div className="inline-flex w-full mt-20 h-96">
-					<div className="w-1/2 flex w-full justify-center items-center">
+					<div className="flex justify-center items-center w-1/2 mr-20">
 						<Image
 							src={`${axios.defaults.baseURL}/uploads/poster/${poster}`}></Image>
 					</div>
@@ -77,6 +83,11 @@ const EventDetail = () => {
 								<MdAccessTime size={24} />
 								<span className="ml-2">{time}</span>
 							</div>
+						</div>
+
+						<div className="flex text-sm items-center">
+							<MdOutlineSell size={24} />
+							<span className="ml-2">Terjual: {sold}</span>
 						</div>
 
 						<div className="flex justify-between items-center">
@@ -120,6 +131,7 @@ const EventDetail = () => {
 								image={`${axios.defaults.baseURL}/uploads/poster/${event.poster}`}
 								name={event.eventName}
 								eventDate={eventDate}
+								sold={event.sold}
 							/>
 						);
 					})}

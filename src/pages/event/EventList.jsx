@@ -27,6 +27,7 @@ const EventList = () => {
 							image={`${axios.defaults.baseURL}/uploads/poster/${event.poster}`}
 							name={event.eventName}
 							eventDate={eventDate}
+							sold={event.sold}
 						/>
 					</div>
 				);

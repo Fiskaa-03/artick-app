@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
-import { MdOutlineDateRange, MdAccessTime } from "react-icons/md";
+import {
+	MdOutlineDateRange,
+	MdAccessTime,
+	MdOutlineSell,
+} from "react-icons/md";
 
 import {
 	Link,
@@ -11,7 +15,7 @@ import {
 	Image,
 } from "@nextui-org/react";
 
-const EventCard = ({ id, image, name, category, eventDate }) => {
+const EventCard = ({ id, image, name, category, eventDate, sold }) => {
 	const month = eventDate.toLocaleString("default", {
 		month: "short",
 	});
@@ -36,6 +40,10 @@ const EventCard = ({ id, image, name, category, eventDate }) => {
 						<MdAccessTime size={20} color="black" />
 						<p className="ml-1">{time}</p>
 					</div>
+				</div>
+				<div className="flex items=center mt-4">
+					<MdOutlineSell size={24} />
+					<h1 className="text-sm">Terjual {sold}</h1>
 				</div>
 			</CardBody>
 			<Divider />
