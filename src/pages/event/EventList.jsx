@@ -15,7 +15,7 @@ const EventList = () => {
 	}, []);
 
 	return (
-		<div className="flex items-center justify-around my-20 mx-auto">
+		<div className="flex items-center flex-wrap justify-around my-20 mx-auto">
 			{events.map((event) => {
 				const eventDate = new Date(event.schedule);
 				return (
