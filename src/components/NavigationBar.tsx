@@ -52,7 +52,7 @@ const NavigationBar = () => {
 					</Link>
 				</NavbarItem>
 				<NavbarItem>
-					<Link className="text-white" href="#">
+					<Link className="text-white" href="/#tentang-kami">
 						Tentang Kami
 					</Link>
 				</NavbarItem>

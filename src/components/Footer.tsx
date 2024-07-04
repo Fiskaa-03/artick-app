@@ -1,4 +1,7 @@
 import { Image } from "@nextui-org/react";
+import { MdOutlineEmail } from "react-icons/md";
+import { BsTelephone } from "react-icons/bs";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa6";
 import React from "react";
 
 export default function Footer() {
@@ -12,21 +15,37 @@ export default function Footer() {
 				</div>
 				<div className="flex flex-col justify-between h-full">
 					<h3 className="mb-6">Platform Kami</h3>
-					<span className="my-2">Tentang Kami</span>
-					<span className="my-2">Cara Buat Event</span>
-					<span className="my-2">Cari Event</span>
-					<span className="my-2">Mitra Artick</span>
+					<a className="my-2" href="/#tentang-kami">
+						Tentang Kami
+					</a>
+					<a className="my-2" href="/event">
+						Cari Event
+					</a>
 				</div>
 				<div className="flex flex-col justify-between h-full">
 					<h3 className="mb-6">Kontak Kami</h3>
-					<span className="my-2">Tentang Kami</span>
-					<span className="my-2">Cara Buat Event</span>
-					<span className="my-2">Cari Event</span>
-					<span className="my-2">Mitra Artick</span>
+					<div className="flex items-center">
+						<BsTelephone className="mr-2 text-xl" />
+						<a className="my-2">+62 878-4971-2670</a>
+					</div>
+					<div className="flex items-center">
+						<FaWhatsapp className="mr-2 text-xl" />
+						<a className="my-2" href="https://wa.me/087849712670">
+							+62 878-4971-2670
+						</a>
+					</div>
+					<div className="flex items-center">
+						<MdOutlineEmail className="mr-2 text-xl" />
+						<a className="my-2" href="mailto:pawsion.community@gmail.com">
+							pawsion.community@gmail.com
+						</a>
+					</div>
 				</div>
 				<div className="flex flex-col justify-between h-full">
 					<h3 className="mb-6">Media Sosial</h3>
-					<span className="my-2">Instagram</span>
+					<a className="my-2" href="https://www.instagram.com/artick.official/">
+						<FaInstagram className="text-4xl" />
+					</a>
 				</div>
 			</div>
 		</div>

@@ -105,7 +105,9 @@ const Home = () => {
 			{/* End Event Section */}
 
 			{/* Greeting */}
-			<div className="container my-20 w-500 mx-auto rounded-md py-8">
+			<div
+				className="container my-20 w-500 mx-auto rounded-md py-8"
+				id="tentang-kami">
 				<SectionHeader title="Tentang Kami" description="" color="primary" />
 				<div className="text-primary text-center text-xl mt-20">
 					<p>
