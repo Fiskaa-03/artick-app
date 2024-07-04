@@ -59,7 +59,7 @@ const EventDetail = () => {
 		<div className="bg-white ">
 			<div className="container mx-auto">
 				<div className="inline-flex w-full mt-20 h-96">
-					<div className="flex justify-center items-center w-1/2 mr-20">
+					<div className="flex justify-center items-center w-1/3 mr-20">
 						<Image
 							src={`${axios.defaults.baseURL}/uploads/poster/${poster}`}></Image>
 					</div>

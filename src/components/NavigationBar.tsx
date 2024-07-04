@@ -69,7 +69,7 @@ const NavigationBar = () => {
 				</NavbarItem>
 			</NavbarContent>
 			<NavbarContent justify="end">
-				<NavbarItem>
+				{/* <NavbarItem>
 					<Link className="text-white" href="/login">
 						Login
 					</Link>
@@ -81,7 +81,7 @@ const NavigationBar = () => {
 						className="text-white bg-transparent border  hover:bg-primary hover:border-primary">
 						Sign Up
 					</Button>
-				</NavbarItem>
+				</NavbarItem> */}
 			</NavbarContent>
 			<NavbarMenu className="p-10">
 				{menuItems.map((item, index) => (
