@@ -8,6 +8,7 @@ import {
 	MdAccessTime,
 	MdOutlineSell,
 } from "react-icons/md";
+import { GiSandsOfTime } from "react-icons/gi";
 import EventCard from "../../components/EventCard";
 import { useParams } from "react-router-dom";
 
@@ -16,6 +17,7 @@ const EventDetail = () => {
 	const [events, setEvents] = useState([]);
 	const [eventName, SetEventName] = useState();
 	const [description, SetDescription] = useState();
+	const [category, SetCategory] = useState();
 	const [eventDate, SetEventDate] = useState(new Date());
 	const [price, SetPrice] = useState();
 	const [place, SetPlace] = useState();
@@ -37,6 +39,7 @@ const EventDetail = () => {
 	const getEventByID = async () => {
 		const response = await axios.get(`event/${id}`);
 		SetEventName(response.data.eventName);
+		SetCategory(response.data.category);
 		SetDescription(response.data.description);
 		SetEventDate(new Date(response.data.schedule));
 		SetPrice(response.data.price);
@@ -74,15 +77,26 @@ const EventDetail = () => {
 						</div>
 
 						<div className="flex">
-							<div className="flex text-sm items-center">
-								<MdOutlineDateRange size={24} />
-								<span className="ml-2">{date}</span>
-							</div>
+							{category !== "FILM" ? (
+								<>
+									<div className="flex text-sm items-center">
+										<MdOutlineDateRange size={24} />
+										<span className="ml-2">{date}</span>
+									</div>
 
-							<div className="flex text-sm items-center ml-8">
-								<MdAccessTime size={24} />
-								<span className="ml-2">{time}</span>
-							</div>
+									<div className="flex text-sm items-center ml-8">
+										<MdAccessTime size={24} />
+										<span className="ml-2">{time}</span>
+									</div>
+								</>
+							) : (
+								<>
+									<div className="flex text-sm items-center">
+										<GiSandsOfTime size={24} />
+										<span className="ml-2">{time}</span>
+									</div>
+								</>
+							)}
 						</div>
 
 						<div className="flex text-sm items-center">

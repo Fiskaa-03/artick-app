@@ -36,8 +36,8 @@ export default function Footer() {
 					</div>
 					<div className="flex items-center">
 						<MdOutlineEmail className="mr-2 text-xl" />
-						<a className="my-2" href="mailto:pawsion.community@gmail.com">
-							pawsion.community@gmail.com
+						<a className="my-2" href="mailto:artick.official.id@gmail.com">
+							artick.official.id@gmail.com
 						</a>
 					</div>
 				</div>
