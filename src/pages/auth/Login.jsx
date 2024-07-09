@@ -30,7 +30,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (user || isSuccess) {
-			navigate("/event");
+			navigate("/");
 		}
 		dispatch(reset());
 	}, [user, isSuccess, dispatch, navigate]);
