@@ -1,4 +1,8 @@
-"use client";
+import { useEffect } from "react";
+import { getMe } from "../features/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Logout, reset } from "../features/authSlice";
 
 import React from "react";
 import {
@@ -10,13 +14,27 @@ import {
 	NavbarMenu,
 	NavbarMenuItem,
 	Link,
-	Button,
 	Image,
 } from "@nextui-org/react";
-import { color } from "framer-motion";
 import { useLocation } from "react-router-dom";
+import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
 
 const NavigationBar = () => {
+	const Navigate = useNavigate();
+	const Dispatch = useDispatch();
+	const { user } = useSelector((state) => state.auth);
+
+	useEffect(() => {
+		Dispatch(getMe());
+	}, [Dispatch]);
+
+	const logout = () => {
+		Dispatch(Logout());
+		Dispatch(reset());
+		Navigate("/");
+	};
+
 	const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 	const Location = useLocation();
 	const menuItems = ["Beranda", "Tentang kami", "Cari Event"];
@@ -69,19 +87,24 @@ const NavigationBar = () => {
 				</NavbarItem>
 			</NavbarContent>
 			<NavbarContent justify="end">
-				{/* <NavbarItem>
-					<Link className="text-white" href="/login">
-						Login
-					</Link>
-				</NavbarItem>
-				<NavbarItem>
-					<Button
-						as={Link}
-						href="/signup"
-						className="text-white bg-transparent border  hover:bg-primary hover:border-primary">
-						Sign Up
-					</Button>
-				</NavbarItem> */}
+				{user == null ? (
+					<>
+						<NavbarItem>
+							<Link className="text-white">
+								<Login />
+							</Link>
+						</NavbarItem>
+						<NavbarItem>
+							<Register />
+						</NavbarItem>
+					</>
+				) : (
+					<NavbarItem>
+						<Link className="text-white cursor-pointer" onClick={logout}>
+							Logout
+						</Link>
+					</NavbarItem>
+				)}
 			</NavbarContent>
 			<NavbarMenu className="p-10">
 				{menuItems.map((item, index) => (

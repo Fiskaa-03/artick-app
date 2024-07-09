@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import { getMe } from "../../features/authSlice";
 import axios from "axios";
 
 import { Image, Input, Button, Link } from "@nextui-org/react";
@@ -10,9 +13,12 @@ import {
 } from "react-icons/md";
 import { GiSandsOfTime } from "react-icons/gi";
 import EventCard from "../../components/EventCard";
-import { useParams } from "react-router-dom";
 
 const EventDetail = () => {
+	const Navigate = useNavigate();
+	const Dispatch = useDispatch();
+	const { isError, user } = useSelector((state) => state.auth);
+
 	const { id } = useParams();
 	const [events, setEvents] = useState([]);
 	const [eventName, SetEventName] = useState();
@@ -48,6 +54,20 @@ const EventDetail = () => {
 		SetLink(response.data.link);
 		SetSold(response.data.sold);
 	};
+
+	const Booking = () => {
+		if (isError) {
+			alert("Mohon Login untuk melakukan pemesanan");
+			Navigate(`/event`);
+		}
+		if (user) {
+			window.open(`${link}`, "_blank");
+		}
+	};
+
+	useEffect(() => {
+		Dispatch(getMe());
+	}, [Dispatch]);
 
 	useEffect(() => {
 		getEvents();
@@ -122,10 +142,8 @@ const EventDetail = () => {
 								<span>Total</span>
 								<Input type="number" color="primary" value={Total} />
 							</div> */}
-							<Button className="bg-primary">
-								<Link href={`${link}`} target="_blank" className="text-white">
-									Book Now
-								</Link>
+							<Button className="bg-primary text-white" onClick={Booking}>
+								Book Now
 							</Button>
 						</div>
 					</div>
